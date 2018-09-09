@@ -1,0 +1,55 @@
+# [Python] Schools Scrapper
+
+Ce projet est un exercice ayant pour but de s'entraîner au scrapping et à la mise en forme de données.
+Voici le sujet :
+```
+L'objectif de ce tests est de regrouper deux sources de données différentes
+et de les modéliser dans un format propre à ce que les données résultantes
+soient directement incorporées dans une base de données.
+
+
+La première source de données {Insee} est la liste géolocalisée des
+établissements d'enseignement du premier et second degrés
+
+  https://www.data.gouv.fr/fr/datasets/adresse-et-geolocalisation-des-etablissements-denseignement-du-premier-et-second-degres/
+
+
+La seconde source de données {Créteil} est la liste des établissements
+du second degré de l'académie de Créteil
+
+  http://www.ia94.ac-creteil.fr/infogen/etablissements/lycees.htm
+
+
+Nous cherchons en premier lieu à enrichir {Insee} des numéros de téléphone
+contenus dans {Créteil}, puis de modéliser en plusieurs collections/tables
+les données résultantes.
+
+
+Trois tâches sont demandées pour cet exercice :
+
+
+ 1/ La collecte, le formatage et la normalisation des données,
+
+ 2/ La fusion des données,
+
+ 3/ La modélisation des données.
+ 
+
+Les données résultantes sont susceptibles d'être utilisées en totalité ou partiellement.
+
+
+Fichiers attendus :
+
+ - Code de collecte/formatage/normalisation/fusion;
+
+ - Fichiers contenant les données résultantes;
+
+ - Tout fichier jugé nécessaire pour la reprise sur erreur, le débuggage,
+ etc. ou encore la bonne compréhension du résultat final;
+
+ - Documentation de description de la méthode employée.
+
+
+Mis à part ce dernier fichier, les fichiers attendus seront au
+format JSON et encodés en UTF-8.
+```
