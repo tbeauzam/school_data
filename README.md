@@ -103,6 +103,7 @@ python main.py
 On ajoute à cela un champ `Téléphone` au cours de l'éxécution du script.
 
 ##### Exemple d'objet json généré par le script :
+On note que les différents champs ont été réorganisés en trois grandes catégories, tout en gardant l'ID à la racine de l'objet, pour rendre les données plus lisibles et plus facilement exploitables.
 ```
 {
     "info":{
