@@ -68,7 +68,7 @@ python main.py
   - `schools_with_phone` : liste des lycées du Val-de-Marne possédant un numéro de téléphone au format json (~ 40 entrées)
   
 ##### Liste des champs issus du .csv de la première source de données :
-`
+```
     Code établissement
     Appellation officielle
     Dénomination principale',
@@ -99,11 +99,11 @@ python main.py
     Région
     Académie
     Position
-`
+```
 On ajoute à cela un champ `Téléphone` au cours de l'éxécution du script.
 
 ##### Exemple d'objet json généré par le script :
-`
+```
 {
     "info":{
         "etat_etablissement":"OUVERT",
@@ -144,4 +144,4 @@ On ajoute à cela un champ `Téléphone` au cours de l'éxécution du script.
     "code_etablissement":"0941930M"
 }
 
-`
+```
