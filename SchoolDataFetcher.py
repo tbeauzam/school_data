@@ -95,17 +95,21 @@ class SchoolDataFetcher:
         return school_list
 
 
-    def generate_json_file(self, data):
+    def generate_json_file(self, data, filename):
         """Takes a list of SchoolData objects and dumps it into a .json file.
-        Best used with a list produced by 'scrap_resources' method.
+        
+        Attributes:
+        data: list of SchooData objects
+        filename: name of the file created
         """
 
         print("Creating json file from school list...:")
         json_list = list()
         for item in data:
             json_list.append(item.better_format())
-        with codecs.open("schools_list.json", "ab", "utf-8") as f:
+        with codecs.open(filename, "wb", "utf-8") as f:
             f.write(json.dumps(json_list, ensure_ascii=False))
+        print("File '" + filename + "' created.")
 
 
     # Private
@@ -124,8 +128,8 @@ class SchoolDataFetcher:
             patronyme = entry['Patronyme uai']
             nature = re.sub(" (D ENSIGNEMENT|ENSEIGNT)", "", entry['Nature'])
             for item in other:
-                if item['nom'].find(patronyme) != -1 and item['type'] == nature:
-                    entry['Téléphone'] = item['telephone']
+                if item.patronyme_uai.find(patronyme) != -1 and item.nature == nature:
+                    entry['Téléphone'] = item.telephone
                     break
         return entry
 
@@ -197,8 +201,8 @@ class SchoolDataFetcher:
 
     def _extract_table(self, data):
         """Reads the table from the website containing all the schools data.
-        A basic dict is filled for each school and added to the list.
-        Returns a list of dicts (all schools on the current page).
+        A SchoolData object is filled for each school and added to the list.
+        Returns a list of SchoolData objects (all schools on the current page).
 
         Attributes:
         data: a string containing the raw code of the HTML page that need to be scrapped
@@ -214,7 +218,6 @@ class SchoolDataFetcher:
 
         school_list = list()
         for item in table.split("<tr>")[1:]:
-            school = {}
             item = re.sub(r"<.*?>", "|", item)
             item = re.sub(r"\|+ ?\|+", "|", item)
             item = item.split("|")
@@ -223,13 +226,17 @@ class SchoolDataFetcher:
             nature = nature.replace("è", "e")
             nature = re.sub("[^a-zA-Z]", " ", nature).upper()
             nature = re.sub(" *LYCEE *(DES METIERS)? *", "", nature)
-            school["nom"] = item[2].strip()
-            school["type"] = "LYCEE " + nature
-            school["ville"] = ville
-            school["code_postal"] = code_postal
-            school["adresse"] = item[3].strip()
-            school["telephone"] = item[4].split(":")[1].strip()
-            school_list.append(school)
+            school = list()
+            for i in range(0, len(self._EXPECTED_FIELD_LIST)):
+                school.append("")
+            school = dict(zip(self._EXPECTED_FIELD_LIST, school))
+            school["Patronyme uai"] = item[2].strip()
+            school["Nature"] = "LYCEE " + nature
+            school["Localite d'acheminement"] = ville
+            school["Code postal"] = code_postal
+            school["Adresse"] = item[3].strip()
+            school["Téléphone"] = item[4].split(":")[1].strip()
+            school_list.append(SchoolData(school))
         return school_list
 
 
@@ -242,3 +249,4 @@ class SchoolDataFetcher:
         if diff:
             sys.exit("Error: mismatching fields: " + ', '.join(diff)
                      + "\nExpected: " + ', '.join(self._EXPECTED_FIELD_LIST))
+

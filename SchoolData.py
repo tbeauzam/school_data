@@ -69,7 +69,7 @@ class SchoolData:
 
         rep = "School data:\n"
         att_list = ["%s: %s" % (att, getattr(self, att)) for att in self._ATTRIBUTE_LIST]
-        rep += '\n'.join(att_list)
+        rep += '\n'.join(att_list) + "\n"
         return rep.encode('utf-8')
 
 

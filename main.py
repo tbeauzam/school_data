@@ -12,7 +12,16 @@ def main():
 
     a = SchoolDataFetcher()
     result = a.scrap_resources()
-    a.generate_json_file(result)
+
+    with_phone = list()
+    for item in result:
+        if item.telephone != "":
+            with_phone.append(item)
+
+    a.generate_json_file(with_phone, "schools_with_phone.json")
+    a.generate_json_file(result, "all_schools.json")
+
+    print("Finished with success!")
 
 if __name__ == "__main__":
     main()
