@@ -1,6 +1,6 @@
-# [Python] Schools Scrapper
+# [Python] Schools Scraper
 
-Ce projet est un exercice ayant pour but de s'entraîner au scrapping et à la mise en forme de données.
+Ce projet est un exercice ayant pour but de s'entraîner au scraping et à la mise en forme de données.
 Voici le sujet :
 ```
 L'objectif de ce tests est de regrouper deux sources de données différentes
@@ -62,7 +62,7 @@ python main.py
 
 - le script nécessite le module "requests" installé et a été fait en python 2.7.12.
 - le script va tenter de télécharger un fichier csv d'environ 20 Mo à partir de la première source de données ([Source 1](https://www.data.gouv.fr/fr/datasets/adresse-et-geolocalisation-des-etablissements-denseignement-du-premier-et-second-degres/)), nécessaire pour la solution de l'exercice. Si le script est éxécuté plusieurs fois et que le fichier est déjà présent à la racine du projet, le script va passer directement à l'étape suivante.
-- le script va scrapper la seconde source de données (page recensant tous les lycées du Val-de-Marne : [Source 2](http://www.ia94.ac-creteil.fr/infogen/etablissements/lycees.htm)) pour récupérer les numéros de téléphone de ces établissements, et les fusionner avec les établissements correspondants venant de la première source de données (qui contient beaucoup d'informations, mais pas les numéros de téléphone)
+- le script va scraper la seconde source de données (page recensant tous les lycées du Val-de-Marne : [Source 2](http://www.ia94.ac-creteil.fr/infogen/etablissements/lycees.htm)) pour récupérer les numéros de téléphone de ces établissements, et les fusionner avec les établissements correspondants venant de la première source de données (qui contient beaucoup d'informations, mais pas les numéros de téléphone)
 - à l'issue de l'éxécution du script, deux fichiers seront générés :
   - `all_schools.json` : liste de toutes les écoles de France au format json (~ 65.000 entrées)
   - `schools_with_phone` : liste des lycées du Val-de-Marne possédant un numéro de téléphone au format json (~ 40 entrées)
